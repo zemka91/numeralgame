@@ -1,0 +1,6 @@
+c:\users\zemka91\documents\visual studio 2015\Projects\sippo777\sippo777\bin\Debug\sippo777.exe.config
+c:\users\zemka91\documents\visual studio 2015\Projects\sippo777\sippo777\bin\Debug\sippo777.exe
+c:\users\zemka91\documents\visual studio 2015\Projects\sippo777\sippo777\bin\Debug\sippo777.pdb
+c:\users\zemka91\documents\visual studio 2015\Projects\sippo777\sippo777\obj\Debug\sippo777.exe
+c:\users\zemka91\documents\visual studio 2015\Projects\sippo777\sippo777\obj\Debug\sippo777.pdb
+C:\Users\zemka91\Documents\Visual Studio 2015\Projects\sippo777\sippo777\obj\Debug\sippo777.csprojResolveAssemblyReference.cache
