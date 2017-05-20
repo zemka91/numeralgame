@@ -11,6 +11,9 @@ namespace sippo777
 {
     class Program
     {
+static        int stari = 0, starj = 0, I = 7, J = 7, score = 0, needscore, lvl;
+static        string loadlvl = "loadlvl";
+static        char[,] array = new char[20, 20];
         static void Main(string[] args)
         {            
             //     Меню
@@ -23,15 +26,14 @@ namespace sippo777
             {
                 case '1':
                     {
-                        Game(1);
-                       
-                        break;
+                    Game(1);
                     }
+                    break;
                 case '2':
                     {
                         Console.Clear();
                         Console.Write("Enter level: ");
-                        int lvl = Console.Read() - 48;
+                        lvl = Console.Read() - 48;
                         Game(lvl);
                     }
                     break;
@@ -44,9 +46,7 @@ namespace sippo777
         }
         static void Game(int lvl)
         {
-            int stari = 0, starj = 0, I = 7, J = 7, score = 0, needscore;
-            string loadlvl = "loadlvl";
-            char[,] array = new char[20, 20];
+
 
             loadlvl += lvl;
             loadlvl += ".txt";
@@ -71,56 +71,24 @@ namespace sippo777
 
             while (true)
             {
-                Console.Clear();
-                Console.WriteLine("SCORE: " + score);
-                Console.WriteLine("NEED SCORE: " + needscore);
-                for (int i = 0; i < I; i++)
-                    for (int j = 0; j < J; j++)
-                    {
-                        Console.Write(array[i, j]);
-                        if (j == J - 1) Console.WriteLine();
-                    }
+                Paint();
                 System.Threading.Thread.Sleep(100);
                 ConsoleKeyInfo key = Console.ReadKey();
                 if ((key.KeyChar == 'd') && (starj != J - 1))
                 {
-                    if (array[stari, starj + 1] != '+')
-                    {
-                        if (array[stari, starj + 1] != ' ') score += array[stari, starj + 1] - 48;
-                        array[stari, starj + 1] = '*';
-                        array[stari, starj] = ' ';
-                        starj++;
-                    }
+                    if (array[stari, starj + 1] != '+') MoveRight();
                 }
                 if ((key.KeyChar == 'a') && (starj != 0))
                 {
-                    if (array[stari, starj - 1] != '+')
-                    {
-                        if (array[stari, starj - 1] != ' ') score += array[stari, starj - 1] - 48;
-                        array[stari, starj - 1] = '*';
-                        array[stari, starj] = ' ';
-                        starj--;
-                    }
+                    if (array[stari, starj - 1] != '+') MoveLeft();
                 }
                 if ((key.KeyChar == 's') && (stari != I - 1))
                 {
-                    if (array[stari + 1, starj] != '+')
-                    {
-                        if (array[stari + 1, starj] != ' ') score += array[stari + 1, starj] - 48;
-                        array[stari + 1, starj] = '*';
-                        array[stari, starj] = ' ';
-                        stari++;
-                    }
+                    if (array[stari + 1, starj] != '+') MoveDown();
                 }
                 if ((key.KeyChar == 'w') && (stari != 0))
                 {
-                    if (array[stari - 1, starj] != '+')
-                    {
-                        if (array[stari - 1, starj] != ' ') score += array[stari - 1, starj] - 48;
-                        array[stari - 1, starj] = '*';
-                        array[stari, starj] = ' ';
-                        stari--;
-                    }
+                    if (array[stari - 1, starj] != '+') MoveUp();
                 }
                 if (key.KeyChar == 'e') break;
                 if (score >= needscore)
@@ -156,6 +124,51 @@ namespace sippo777
                     array[stari, starj] = '*';
                 }
             }
+        }
+
+static  void Paint()
+        {
+            Console.Clear();
+            Console.WriteLine("SCORE: " + score);
+            Console.WriteLine("NEED SCORE: " + needscore);
+            for (int i = 0; i < I; i++)
+                for (int j = 0; j < J; j++)
+                {
+                    Console.Write(array[i, j]);
+                    if (j == J - 1) Console.WriteLine();
+                }
+        }
+
+static  void MoveRight()
+        {
+            if (array[stari, starj + 1] != ' ') score += array[stari, starj + 1] - 48;
+            array[stari, starj + 1] = '*';
+            array[stari, starj] = ' ';
+            starj++;
+        }
+
+static  void MoveLeft()
+        {
+            if (array[stari, starj - 1] != ' ') score += array[stari, starj - 1] - 48;
+            array[stari, starj - 1] = '*';
+            array[stari, starj] = ' ';
+            starj--;
+        }
+
+static  void MoveUp()
+        {
+            if (array[stari - 1, starj] != ' ') score += array[stari - 1, starj] - 48;
+            array[stari - 1, starj] = '*';
+            array[stari, starj] = ' ';
+            stari--;
+        }
+
+static  void MoveDown()
+        {
+            if (array[stari + 1, starj] != ' ') score += array[stari + 1, starj] - 48;
+            array[stari + 1, starj] = '*';
+            array[stari, starj] = ' ';
+            stari++;
         }
     }
 }
