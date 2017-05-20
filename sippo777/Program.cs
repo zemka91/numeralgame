@@ -18,6 +18,7 @@ namespace sippo777
             char[,] array = new char[20, 20];
             //     Меню
             Console.WriteLine("1.NEW GAME");
+            Console.WriteLine("1.NEW GAME");
             Console.WriteLine("2.LOAD GAME");
             Console.WriteLine("3.EXIT");
             Console.Title = "SUPERGAME";
